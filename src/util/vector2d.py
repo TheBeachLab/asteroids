@@ -13,14 +13,14 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #    Copyright (C) 2008  Nick Redshaw
+#    Copyright (C) 2018  Francisco Sanchez Arroyo
 #
+
 
 class Vector2d:
 
-	def __init__(self, x, y):
-		self.x = x
-		self.y = y
-		
-# needs a copy constructor and method for vector addition etc		
-	
-	
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+# needs a copy constructor and method for vector addition etc

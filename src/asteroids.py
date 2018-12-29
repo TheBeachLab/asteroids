@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python3
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -14,6 +14,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #    Copyright (C) 2008  Nick Redshaw
+#    Copyright (C) 2018  Francisco Sanchez Arroyo
 #
 
 # TODO
