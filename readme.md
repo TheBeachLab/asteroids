@@ -5,7 +5,7 @@ Atari Asteroids arcade game of 1978. Turn down the lights, turn up the volume an
 
 ![](img/screenshot.png)
 
-> Ported to Python 3 from the original work *Pythentic Asteroids* by Nick Redshaw
+> Ported to Python 3 by Francisco Sanchez Arroyo from the original work *Pythentic Asteroids* by Nick Redshaw
 
 ## Play
 `python asteroids.py`   
