@@ -22,8 +22,6 @@ from shooter import *
 from math import *
 from soundManager import *
 
-# comment
-
 
 class Ship(Shooter):
 

@@ -39,7 +39,7 @@ class VectorSprite:
 
         #self.color = color = (random.randrange(40,255),random.randrange(40,255),random.randrange(40,255))
 
-    # roatate each x,y coord by the angle, then translate it to the x,y position
+    # rotate each x,y coord by the angle, then translate it to the x,y position
     def rotateAndTransform(self):
         newPointList = [self.rotatePoint(point) for point in self.pointlist]
         self.transformedPointlist = [

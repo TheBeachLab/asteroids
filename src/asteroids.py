@@ -25,6 +25,7 @@
 # random.randrange returns an int
 # random.uniform returns a float
 # p for pause
+# j for toggle showing FPS
 # o for frame advance whilst paused
 
 import pygame
@@ -45,8 +46,9 @@ class Asteroids():
     explodingTtl = 180
 
     def __init__(self):
-        self.stage = Stage('Pythentic Asteroids')
+        self.stage = Stage('Atari Asteroids', (1024, 768))
         self.paused = False
+        self.showingFPS = False
         self.frameAdvance = False
         self.gameState = "attract_mode"
         self.rockList = []
@@ -116,11 +118,13 @@ class Asteroids():
         # Main loop
         while True:
 
-            # fps
+            # calculate fps
             timePassed += clock.tick(60)
             frameCount += 1
-            if frameCount % 10 == 0:
-                self.fps = (frameCount / (timePassed / 1000.0))
+            if frameCount % 10 == 0:  # every 10 frames
+                # nearest integer
+                self.fps = round((frameCount / (timePassed / 1000.0)))
+                # reset counter
                 timePassed = 0
                 frameCount = 0
 
@@ -128,8 +132,9 @@ class Asteroids():
 
             self.input(pygame.event.get())
 
+            # pause
             if self.paused and not self.frameAdvance:
-                # self.displayPaused()
+                self.displayPaused()
                 continue
 
             self.stage.screen.fill((0, 0, 0))
@@ -137,7 +142,8 @@ class Asteroids():
             self.stage.drawSprites()
             self.doSaucerLogic()
             self.displayScore()
-            # self.displayFps()
+            if self.showingFPS:
+                self.displayFps()  # for debug
             self.checkScore()
 
             # Process keys
@@ -253,10 +259,16 @@ class Asteroids():
                         self.initialiseGame()
 
                 if event.key == K_p:
-                    if self.paused:
+                    if self.paused:  # (is True)
                         self.paused = False
                     else:
                         self.paused = True
+
+                if event.key == K_j:
+                    if self.showingFPS:  # (is True)
+                        self.showingFPS = False
+                    else:
+                        self.showingFPS = True
 
                 if event.key == K_f:
                     pygame.display.toggle_fullscreen()
@@ -389,7 +401,7 @@ class Asteroids():
 
     def displayFps(self):
         font2 = pygame.font.Font('../res/Hyperspace.otf', 15)
-        fpsStr = str(self.fps)
+        fpsStr = str(self.fps)+(' FPS')
         scoreText = font2.render(fpsStr, True, (255, 255, 255))
         scoreTextRect = scoreText.get_rect(
             centerx=(self.stage.width/2), centery=15)
@@ -409,7 +421,7 @@ if not pygame.mixer:
     print('Warning, sound disabled')
 
 initSoundManager()
-game = Asteroids()
+game = Asteroids()  # create object game from class Asteroids
 game.playGame()
 
 ####
