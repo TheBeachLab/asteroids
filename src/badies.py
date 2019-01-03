@@ -30,7 +30,7 @@ class Rock(VectorSprite):
     mediumRockType = 1
     smallRockType = 2   
     
-    velocities = (1.5, 4.0, 6.0)    
+    velocities = (1.5, 3.0, 4.5)    
     scales = (2.5, 1.5, 0.6)
 
     # tracks the last rock shape to be generated
@@ -115,7 +115,7 @@ class Saucer(Shooter):
     largeSaucerType = 0
     smallSaucerType = 1
 
-    velocities = (1.7, 3.0)    
+    velocities = (1.5, 2.5)    
     scales = (1.5, 1.0)
     scores = (500, 1000)
     pointlist = [(-9,0), (-3,-3), (-2,-6), (-2,-6), (2,-6), (3,-3), (9,0), (-9,0), (-3,4), (3,4), (9,0)]
