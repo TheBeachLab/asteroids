@@ -65,7 +65,7 @@ class Asteroids():
          for sprite in self.rockList]  # clear old rocks
         if self.saucer is not None:
             self.killSaucer()
-        self.startLives = 3
+        self.startLives = 5
         self.createNewShip()
         self.createLivesList()
         self.score = 0
@@ -137,7 +137,7 @@ class Asteroids():
                 self.displayPaused()
                 continue
 
-            self.stage.screen.fill((0, 0, 0))
+            self.stage.screen.fill((10, 10, 10))
             self.stage.moveSprites()
             self.stage.drawSprites()
             self.doSaucerLogic()
@@ -202,36 +202,38 @@ class Asteroids():
     # move this kack somewhere else!
     def displayText(self):
         font1 = pygame.font.Font('../res/Hyperspace.otf', 50)
-        titleText = font1.render('Asteroids', True, (255, 255, 255))
+        font2 = pygame.font.Font('../res/Hyperspace.otf', 20)
+        font3 = pygame.font.Font('../res/Hyperspace.otf', 30)
+
+        titleText = font1.render('Asteroids', True, (180, 180, 180))
         titleTextRect = titleText.get_rect(centerx=self.stage.width/2)
         titleTextRect.y = self.stage.height/2 - titleTextRect.height*2
         self.stage.screen.blit(titleText, titleTextRect)
 
-        font2 = pygame.font.Font('../res/Hyperspace.otf', 30)
         keysText = font2.render(
-            'Z left, X right, B fire, N thrust, H hyperspace, Esc to quit', True, (255, 255, 255))
+            '(C) 1979 Atari INC.', True, (255, 255, 255))
         keysTextRect = keysText.get_rect(centerx=self.stage.width/2)
-        keysTextRect.y = self.stage.height/2 - keysTextRect.height/2
+        keysTextRect.y = self.stage.height - keysTextRect.height - 20
         self.stage.screen.blit(keysText, keysTextRect)
 
-        instructionText = font1.render(
-            'Press Enter To Play', True, (255, 255, 255))
+        instructionText = font3.render(
+            'Press start to Play', True, (200, 200, 200))
         instructionTextRect = instructionText.get_rect(
             centerx=self.stage.width/2)
-        instructionTextRect.y = self.stage.height/2 + instructionTextRect.height
+        instructionTextRect.y = self.stage.height/2 - instructionTextRect.height
         self.stage.screen.blit(instructionText, instructionTextRect)
 
     def displayScore(self):
-        font2 = pygame.font.Font('../res/Hyperspace.otf', 30)
-        scoreStr = str("%06d" % self.score)
-        scoreText = font2.render(scoreStr, True, (255, 255, 255))
-        scoreTextRect = scoreText.get_rect(centerx=40, centery=15)
+        font1 = pygame.font.Font('../res/Hyperspace.otf', 30)
+        scoreStr = str("%02d" % self.score)
+        scoreText = font1.render(scoreStr, True, (200, 200, 200))
+        scoreTextRect = scoreText.get_rect(centerx=100, centery=45)
         self.stage.screen.blit(scoreText, scoreTextRect)
 
     def displayPaused(self):
         if self.paused:
-            font2 = pygame.font.Font('../res/Hyperspace.otf', 30)
-            pausedText = font2.render("Paused", True, (255, 255, 255))
+            font1 = pygame.font.Font('../res/Hyperspace.otf', 30)
+            pausedText = font1.render("Paused", True, (255, 255, 255))
             textRect = pausedText.get_rect(
                 centerx=self.stage.width/2, centery=self.stage.height/2)
             self.stage.screen.blit(pausedText, textRect)
